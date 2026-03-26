@@ -177,5 +177,4 @@ Test the application route again to confirm the restore was successful.
 curl $(oc get route -n $DEMO_PROJECT hello -ojsonpath='{.spec.host}')
 # Expected result: "Hello OpenShift!"
 ```
-```
 
