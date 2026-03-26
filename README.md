@@ -22,7 +22,8 @@ export CREDENTIALS_VELERO_FILE=/tmp/credentials-velero
 oc new-project $DEMO_PROJECT
 ```
 
-## Phase 2: Storage Configuration
+
+## Phase 2: Storage Configuration
 
 We need to create an Object Bucket Claim (OBC) for the MultiCluster Gateway. This will automatically provision a bucket in the storage backend, generate a ConfigMap with the bucket details, and create a Secret containing the S3 access credentials.
 
@@ -41,7 +42,7 @@ EOF
 
 ## Phase 3: OADP Configuration
 
-### 1. Extract Credentials
+### 1. Extract Credentials
 
 Retrieve the generated S3 access keys and format them into a credentials file for Velero.
 
@@ -52,7 +53,7 @@ aws_access_key_id=$(oc get secret cluster-backup-bucket -n openshift-adp -o json
 aws_secret_access_key=$(oc get secret cluster-backup-bucket -n openshift-adp -o jsonpath='{.data.AWS_SECRET_ACCESS_KEY}' | base64 -d)
 EOF
 ```
-### 2. Create the Cloud Credentials Secret
+### 2. Create the Cloud Credentials Secret
 
 Create the generic secret that OADP will use to access the backup storage location.
 
@@ -131,7 +132,7 @@ curl $(oc get route -n $DEMO_PROJECT hello -ojsonpath='{.spec.host}')
 
 ## Phase 5: Backup and Restore Process
 
-### 1. Create a Backup
+### 1. Create a Backup
 
 Initiate a backup of the entire demo namespace.
 
@@ -175,5 +176,6 @@ Test the application route again to confirm the restore was successful.
 ```bash
 curl $(oc get route -n $DEMO_PROJECT hello -ojsonpath='{.spec.host}')
 # Expected result: "Hello OpenShift!"
+```
 ```
 
