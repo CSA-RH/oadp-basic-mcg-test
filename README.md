@@ -115,7 +115,7 @@ alias velero='oc -n openshift-adp exec deployment/velero -c velero -it -- ./vele
 ```
 
 
-## Backup and restore of Stateless applications
+## Backup and restore of Stateless applications
 
 ### Phase 4: Deploying a Sample Application (Stateless)
 
