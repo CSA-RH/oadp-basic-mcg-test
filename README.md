@@ -79,8 +79,8 @@ spec:
   configuration:
     velero:
       defaultPlugins:
-        - aws
         - openshift
+        - csi
       resourceTimeout: 10m
     nodeAgent:
       enable: true
